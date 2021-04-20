@@ -39,7 +39,7 @@ public class CampoImagem extends JPanel {
 	
 	private void init() {
 		GridBagConstraints gbc = new GridBagConstraints();
-		botaoImagem = new JButton(new ImageIcon(new ImageIcon("resources/noimage.png").getImage().getScaledInstance(LARGURA_IMAGEM, ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
+		botaoImagem = new JButton(new ImageIcon(new ImageIcon("src/resources/noimage.png").getImage().getScaledInstance(LARGURA_IMAGEM, ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
 		botaoImagem.addActionListener(acao -> {
 			JFileChooser fileChooser = new JFileChooser();
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Imagem", "jpg", "png");
@@ -57,7 +57,7 @@ public class CampoImagem extends JPanel {
 				}
 			} else {
 				imagemBase64 = null;
-				botaoImagem.setIcon(new ImageIcon(new ImageIcon("resources/noimage.png").getImage().getScaledInstance(LARGURA_IMAGEM, ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
+				botaoImagem.setIcon(new ImageIcon(new ImageIcon("src/resources/noimage.png").getImage().getScaledInstance(LARGURA_IMAGEM, ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
 			}
 		});
 		add(botaoImagem, gbc);

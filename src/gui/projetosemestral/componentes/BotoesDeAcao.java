@@ -94,7 +94,7 @@ public class BotoesDeAcao extends JPanel {
 		
 		camposExtras.getStarRater().setSelection(0);
 		
-		campoImagem.getBotaoImagem().setIcon(new ImageIcon(new ImageIcon("resources/noimage.png")
+		campoImagem.getBotaoImagem().setIcon(new ImageIcon(new ImageIcon("src/resources/noimage.png")
 				.getImage().getScaledInstance(CampoImagem.LARGURA_IMAGEM, CampoImagem.ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
 		campoImagem.setImagemBase64(null);
 	}
