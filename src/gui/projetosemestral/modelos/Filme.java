@@ -1,7 +1,17 @@
 package gui.projetosemestral.modelos;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Filme {
 	
+	@Id
+	@SequenceGenerator(allocationSize = 1, name = "seq_filme_id", sequenceName = "seq_filme_id")
+	@GeneratedValue(generator = "seq_filme_id", strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	
 	private String titulo;
