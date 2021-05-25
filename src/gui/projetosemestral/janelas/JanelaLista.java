@@ -4,18 +4,14 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.List;
 
-import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import gui.projetosemestral.componentes.BarraDeNavegacao;
-import gui.projetosemestral.componentes.CampoImagem;
 import gui.projetosemestral.componentes.CamposCadastro;
 import gui.projetosemestral.componentes.CamposExtras;
 import gui.projetosemestral.modelos.Filme;
@@ -72,8 +68,7 @@ public class JanelaLista extends JPanel {
 				int confirma = JOptionPane.showConfirmDialog(null, String.format("Tem certeza que desejar deletar o filme %s?", nome), "Deletar", JOptionPane.YES_NO_OPTION);
 				switch(confirma) {
 					case JOptionPane.YES_OPTION:
-						System.out.println("Deletando...");
-						//filmeService.deletarPorId(id);
+						filmeService.deletarPorId(id);
 					break;
 				}
 			} else {
