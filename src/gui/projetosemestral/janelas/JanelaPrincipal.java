@@ -12,6 +12,8 @@ public class JanelaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	public static BarraDeNavegacao nav;
+	
 	public static final int LARGURA = 650;
 	public static final int ALTURA = 330;
 	
@@ -30,7 +32,7 @@ public class JanelaPrincipal extends JFrame {
 		components.add(new JanelaCadastro());
 		components.add(new JanelaLista());
 		
-		BarraDeNavegacao nav = new BarraDeNavegacao(tabs, components);
+		nav = new BarraDeNavegacao(tabs, components);
 		nav.addChangeListener(change -> {
 			nav.setComponentAt(1, new JanelaLista());
 		});
@@ -45,5 +47,5 @@ public class JanelaPrincipal extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-
+	
 }

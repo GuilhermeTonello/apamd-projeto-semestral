@@ -7,7 +7,7 @@ import gui.projetosemestral.modelos.Filme;
 
 public class FilmeService {
 	
-	private GenericDao<Filme> dao = new GenericDao<Filme>(Filme.class, "projeto-semestral");
+	private GenericDao<Filme, Integer> dao = new GenericDao<>(Filme.class, "projeto-semestral");
 	
 	public void cadastrar(Filme filme) {
 		dao.cadastrar(filme);
@@ -15,6 +15,18 @@ public class FilmeService {
 
 	public List<Filme> procurarTodos() {
 		return dao.procurarTodos();
+	}
+	
+	public void deletarPorId(Integer id) {
+		dao.deletarPorId(id);
+	}
+	
+	public void atualizar(Filme filme) {
+		dao.atualizar(filme);
+	}
+	
+	public Filme findById(Integer id) {
+		return dao.findById(id);
 	}
 	
 }

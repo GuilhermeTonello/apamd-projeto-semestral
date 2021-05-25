@@ -1,5 +1,6 @@
 package gui.projetosemestral.modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ public class Filme {
 	
 	private Double avaliacao;
 	
+	@Column(columnDefinition="TEXT")
 	private String imagem;
 
 	public Integer getId() {

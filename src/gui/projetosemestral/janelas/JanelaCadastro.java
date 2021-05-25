@@ -13,6 +13,10 @@ public class JanelaCadastro extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private CampoImagem campoImagem;
+	private CamposCadastro camposCadastro;
+	private CamposExtras camposExtras;
+	
 	public JanelaCadastro() {
 		BorderLayout borderLayout = new BorderLayout();
 		borderLayout.setHgap(25);
@@ -21,16 +25,28 @@ public class JanelaCadastro extends JPanel {
 	}
 	
 	private void init() {
-		CampoImagem campoImagem = new CampoImagem();
+		campoImagem = new CampoImagem();
 		add(campoImagem, BorderLayout.WEST);
 		
-		CamposCadastro camposCadastro = new CamposCadastro();
+		camposCadastro = new CamposCadastro();
         add(camposCadastro, BorderLayout.CENTER);
         
-        CamposExtras camposExtras = new CamposExtras();
+        camposExtras = new CamposExtras();
         add(camposExtras, BorderLayout.EAST);
         
         add(new BotoesDeAcao(camposCadastro, camposExtras, campoImagem), BorderLayout.SOUTH);
+	}
+	
+	public CampoImagem getCampoImagem() {
+		return campoImagem;
+	}
+	
+	public CamposCadastro getCamposCadastro() {
+		return camposCadastro;
+	}
+	
+	public CamposExtras getCamposExtras() {
+		return camposExtras;
 	}
 	
 }

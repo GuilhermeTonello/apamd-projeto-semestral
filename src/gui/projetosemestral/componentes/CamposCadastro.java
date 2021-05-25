@@ -16,16 +16,23 @@ public class CamposCadastro extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
+	private JTextField campoId;
 	private JTextField tituloCampo;
 	private JTextField sinopseCampo;
 	private JComboBox<String> generoCampo;
 	
 	public CamposCadastro() {
-		setLayout(new GridLayout(6, 1));
+		setLayout(new GridLayout(8, 1));
 		init();
 	}
 	
 	private void init() {
+		JLabel tituloId = new JLabel("ID");
+		campoId = new JTextField();
+		campoId.setEditable(false);
+		add(tituloId);
+		add(campoId);
+		
 		JLabel tituloTexto = new JLabel("Título");
 		tituloCampo = new JTextField();
 		add(tituloTexto);
@@ -43,6 +50,10 @@ public class CamposCadastro extends JPanel {
 		
 		add(generoTexto);
 		add(generoCampo);
+	}
+	
+	public JTextField getCampoId() {
+		return campoId;
 	}
 
 	public JTextField getTituloCampo() {

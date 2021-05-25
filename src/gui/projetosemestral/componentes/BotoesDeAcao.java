@@ -36,7 +36,7 @@ public class BotoesDeAcao extends JPanel {
 		botaoSalvar.addActionListener(acao -> {
 			int confirma = JOptionPane.showConfirmDialog(null, "Deseja mesmo salvar?", "Salvar", JOptionPane.YES_NO_OPTION);
 			switch (confirma) {
-				case 0:
+				case JOptionPane.YES_OPTION:
 					String titulo = camposCadastro.getTituloCampo().getText();
 					String sinopse = camposCadastro.getSinopseCampo().getText();
 					String genero = (String) camposCadastro.getGeneroCampo().getSelectedItem();
@@ -46,7 +46,7 @@ public class BotoesDeAcao extends JPanel {
 					if (!titulo.isBlank()
 							&& !sinopse.isBlank()
 							&& ondeAssistir != null) {
-						
+						// atualizar o filme aqui, boa sorte jamaglian
 						Filme filme = new Filme();
 						filme.setAssistido(assistido);
 						filme.setAvaliacao(avaliacao);
@@ -70,7 +70,7 @@ public class BotoesDeAcao extends JPanel {
 		botaoCancelar.addActionListener(acao -> {
 			int confirma = JOptionPane.showConfirmDialog(null, "Deseja mesmo cancelar?", "Cancelar", JOptionPane.YES_NO_OPTION);
 			switch (confirma) {
-				case 0:
+				case JOptionPane.YES_OPTION:
 					limparCampos();
 					break;
 			}
@@ -81,6 +81,7 @@ public class BotoesDeAcao extends JPanel {
 	}
 	
 	private void limparCampos() {
+		camposCadastro.getCampoId().setText("");
 		camposCadastro.getTituloCampo().setText("");
 		camposCadastro.getSinopseCampo().setText("");
 		
