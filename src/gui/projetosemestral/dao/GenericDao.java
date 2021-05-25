@@ -70,6 +70,7 @@ public class GenericDao<T, ID> {
 	}
 	
 	public T findById(ID id) {
+		manager = factory.createEntityManager();
 		return manager.find(persistedClass, id);
 	}
 

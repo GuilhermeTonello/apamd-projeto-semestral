@@ -2,8 +2,14 @@ package gui.projetosemestral.janelas;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,9 +18,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import gui.projetosemestral.componentes.BarraDeNavegacao;
+import gui.projetosemestral.componentes.CampoImagem;
 import gui.projetosemestral.componentes.CamposCadastro;
 import gui.projetosemestral.componentes.CamposExtras;
 import gui.projetosemestral.modelos.Filme;
+import gui.projetosemestral.servicos.EncodeImageBase64Service;
 import gui.projetosemestral.servicos.FilmeService;
 
 public class JanelaLista extends JPanel {
@@ -69,6 +77,8 @@ public class JanelaLista extends JPanel {
 				switch(confirma) {
 					case JOptionPane.YES_OPTION:
 						filmeService.deletarPorId(id);
+						JanelaPrincipal.nav.setSelectedIndex(0);
+						JanelaPrincipal.nav.setSelectedIndex(1);
 					break;
 				}
 			} else {
@@ -98,7 +108,19 @@ public class JanelaLista extends JPanel {
 				
 				CamposCadastro camposCadastro = janelaCadastro.getCamposCadastro();
 				CamposExtras camposExtras = janelaCadastro.getCamposExtras();
+				CampoImagem cmpImagem = janelaCadastro.getCampoImagem();
 				
+				Filme filme_ = filmeService.findById(id);
+				if(filme_.getImagem() != null) {
+					try {
+						byte[] btDataFile = Base64.getDecoder().decode(filme_.getImagem());
+						cmpImagem.setImagemBase64(filme_.getImagem());
+						BufferedImage imagemDecodificada = ImageIO.read(new ByteArrayInputStream(btDataFile));
+						cmpImagem.getBotaoImagem().setIcon(new ImageIcon(new ImageIcon(imagemDecodificada).getImage().getScaledInstance(CampoImagem.LARGURA_IMAGEM, CampoImagem.ALTURA_IMAGEM, Image.SCALE_DEFAULT)));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 				camposCadastro.getCampoId().setText(String.valueOf(id));
 				camposCadastro.getTituloCampo().setText(titulo);
 				camposCadastro.getSinopseCampo().setText(sinopse);

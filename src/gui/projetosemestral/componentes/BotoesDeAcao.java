@@ -48,6 +48,7 @@ public class BotoesDeAcao extends JPanel {
 							&& ondeAssistir != null) {
 						// atualizar o filme aqui, boa sorte jamaglian
 						Filme filme = new Filme();
+						if(filme.getId() != null) filme.setId(Integer.valueOf(camposCadastro.getCampoId().getText()));
 						filme.setAssistido(assistido);
 						filme.setAvaliacao(avaliacao);
 						filme.setGenero(genero);
@@ -55,7 +56,7 @@ public class BotoesDeAcao extends JPanel {
 						filme.setSinopse(sinopse);
 						filme.setTitulo(titulo);
 						filme.setImagem(campoImagem.getImagemBase64());
-						filmeService.cadastrar(filme);
+						if(filme.getId() != null) filmeService.atualizar(filme); else filmeService.cadastrar(filme);
 						System.out.println(filme);
 						limparCampos();
 						JOptionPane.showMessageDialog(null, String.format("Filme %s salvo", titulo), "Salvo", JOptionPane.INFORMATION_MESSAGE);
