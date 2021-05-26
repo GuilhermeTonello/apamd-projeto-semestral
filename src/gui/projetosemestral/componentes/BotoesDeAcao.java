@@ -43,12 +43,14 @@ public class BotoesDeAcao extends JPanel {
 					ButtonModel ondeAssistir = camposExtras.getOndeAssistirGrupo().getSelection();
 					boolean assistido = camposExtras.getAssistido().isSelected();
 					double avaliacao = camposExtras.getStarRater().getSelection();
+					String id = camposCadastro.getCampoId().getText();
 					if (!titulo.isBlank()
 							&& !sinopse.isBlank()
 							&& ondeAssistir != null) {
-						// atualizar o filme aqui, boa sorte jamaglian
 						Filme filme = new Filme();
-						if(filme.getId() != null) filme.setId(Integer.valueOf(camposCadastro.getCampoId().getText()));
+						if (!id.isBlank()) {
+							filme.setId(Integer.valueOf(camposCadastro.getCampoId().getText()));
+						}
 						filme.setAssistido(assistido);
 						filme.setAvaliacao(avaliacao);
 						filme.setGenero(genero);
@@ -56,7 +58,11 @@ public class BotoesDeAcao extends JPanel {
 						filme.setSinopse(sinopse);
 						filme.setTitulo(titulo);
 						filme.setImagem(campoImagem.getImagemBase64());
-						if(filme.getId() != null) filmeService.atualizar(filme); else filmeService.cadastrar(filme);
+						if(filme.getId() != null) {
+							filmeService.atualizar(filme);
+						} else {
+							filmeService.cadastrar(filme);
+						}
 						System.out.println(filme);
 						limparCampos();
 						JOptionPane.showMessageDialog(null, String.format("Filme %s salvo", titulo), "Salvo", JOptionPane.INFORMATION_MESSAGE);
@@ -88,7 +94,6 @@ public class BotoesDeAcao extends JPanel {
 		
 		camposExtras.getOndeAssistirGrupo().clearSelection();
 		camposExtras.getAssistido().setSelected(false);
-		
 		camposExtras.getStarRater().setSelection(0);
 		
 		campoImagem.getBotaoImagem().setIcon(new ImageIcon(new ImageIcon("src/resources/noimage.png")

@@ -22,7 +22,6 @@ import gui.projetosemestral.componentes.CampoImagem;
 import gui.projetosemestral.componentes.CamposCadastro;
 import gui.projetosemestral.componentes.CamposExtras;
 import gui.projetosemestral.modelos.Filme;
-import gui.projetosemestral.servicos.EncodeImageBase64Service;
 import gui.projetosemestral.servicos.FilmeService;
 
 public class JanelaLista extends JPanel {
